@@ -1,190 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Business Website Starter</title>
-  <meta name="description" content="A clean starter website for a service business." />
+  <title>SwapCircle — Barter Marketplace Prototype</title>
   <style>
     :root {
-      --bg: #f7f7f5;
-      --text: #1f2937;
-      --muted: #6b7280;
-      --brand: #2563eb;
-      --brand-dark: #1d4ed8;
-      --card: #ffffff;
-      --line: #e5e7eb;
+      --bg: #0b1020;
+      --panel: #111831;
+      --soft: #1a2445;
+      --line: #2b3967;
+      --text: #eef2ff;
+      --muted: #a8b2d1;
+      --accent: #7c9cff;
+      --accent2: #4de2c5;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: linear-gradient(180deg, #09101d 0%, #0f1730 100%);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.5;
     }
-    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
-    header {
-      background: #fff;
-      border-bottom: 1px solid var(--line);
-      position: sticky;
-      top: 0;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-    }
-    .brand { font-size: 1.2rem; font-weight: 700; }
-    .nav-links { display: flex; gap: 18px; }
-    .nav-links a, .btn, .btn-outline { text-decoration: none; }
-    .hero {
-      padding: 88px 0 64px;
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 36px;
-      align-items: center;
-    }
-    h1 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.05; margin: 0 0 16px; }
-    h2 { font-size: 2rem; margin: 0 0 12px; }
-    p.lead { font-size: 1.1rem; color: var(--muted); max-width: 680px; }
-    .btn, .btn-outline {
-      display: inline-block;
-      padding: 14px 20px;
-      border-radius: 12px;
-      font-weight: 700;
-      margin-right: 10px;
-      margin-top: 10px;
-    }
-    .btn { background: var(--brand); color: #fff; }
-    .btn:hover { background: var(--brand-dark); }
-    .btn-outline { border: 1px solid var(--brand); color: var(--brand); background: #fff; }
-    .mock {
-      background: var(--card);
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 28px 0; }
+    .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .brand { font-weight: 800; letter-spacing:.2px; }
+    .tag { color: var(--muted); font-size: 14px; }
+    .hero { display:grid; grid-template-columns: 1.1fr .9fr; gap: 28px; padding: 28px 0 52px; }
+    .card, .panel {
+      background: rgba(17,24,49,.92);
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 14px 40px rgba(0,0,0,.06);
+      box-shadow: 0 12px 40px rgba(0,0,0,.22);
     }
-    section { padding: 70px 0; }
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px;
-    }
-    .muted { color: var(--muted); }
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    form {
-      display: grid;
-      gap: 14px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      font: inherit;
-    }
-    footer {
-      padding: 30px 0;
-      border-top: 1px solid var(--line);
-      background: #fff;
-      color: var(--muted);
-      text-align: center;
-    }
-    @media (max-width: 850px) {
-      .hero-grid, .grid-3, .contact-box { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
+    .hero-copy { padding: 34px; }
+    h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.02; margin: 0 0 16px; }
+    p.lead { font-size: 18px; color: var(--muted); margin: 0 0 24px; }
+    .actions { display:flex; flex-wrap:wrap; gap: 12px; margin: 24px 0; }
+    .btn { border: 0; border-radius: 12px; padding: 13px 18px; font-weight: 700; text-decoration:none; display:inline-block; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), #95aaff); color:#08101f; }
+    .btn.secondary { background: transparent; color: var(--text); border:1px solid var(--line); }
+    .stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stat { padding: 14px; background: var(--soft); border-radius: 14px; border: 1px solid var(--line); }
+    .stat b { display:block; font-size: 20px; }
+    .hero-panel { padding: 22px; display:grid; gap:16px; }
+    .mini { background: var(--soft); border:1px solid var(--line); border-radius:16px; padding:16px; }
+    .badge { display:inline-block; background: rgba(124,156,255,.14); color:#cbd6ff; border:1px solid rgba(124,156,255,.35); padding:6px 10px; border-radius:999px; font-size:12px; margin-bottom:12px; }
+    section { padding: 16px 0 34px; }
+    h2 { font-size: 28px; margin: 0 0 14px; }
+    .grid3 { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .feature { padding: 20px; }
+    .feature h3 { margin: 0 0 10px; font-size: 18px; }
+    .feature p { margin: 0; color: var(--muted); }
+    .flow { display:grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .step { padding: 16px; }
+    .step small { color: var(--accent2); font-weight:700; display:block; margin-bottom:8px; }
+    .split { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    ul { margin: 0; padding-left: 20px; }
+    li { margin: 8px 0; color: var(--muted); }
+    footer { color: var(--muted); font-size: 14px; padding: 20px 0 50px; }
+    @media (max-width: 920px) {
+      .hero, .split, .grid3, .flow, .stats { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="container">
-      <nav>
-        <div class="brand">Your Business Name</div>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+    <div class="wrap nav">
+      <div>
+        <div class="brand">SwapCircle</div>
+        <div class="tag">Barter marketplace prototype for item-for-item exchanges with cash top-ups and shipping support.</div>
+      </div>
+      <a class="btn secondary" href="#mvp">View MVP scope</a>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <p class="muted">Starter website preview</p>
-        <h1>Professional website for your business</h1>
-        <p class="lead">This is a clean starter layout we can quickly customize once the client confirms their business name, services, images, and preferred style.</p>
-        <a class="btn" href="#contact">Get Started</a>
-        <a class="btn-outline" href="#services">View Services</a>
+  <main class="wrap">
+    <section class="hero">
+      <div class="card hero-copy">
+        <div class="badge">Marketplace Concept Prototype</div>
+        <h1>Trade items, not just money.</h1>
+        <p class="lead">A multi-vendor marketplace where users swap item-for-item, add optional cash on top, negotiate directly, and generate shipping labels when a deal is accepted.</p>
+        <div class="actions">
+          <a class="btn primary" href="#flow">See the exchange flow</a>
+          <a class="btn secondary" href="#features">Explore platform features</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><b>Swap offers</b><span class="tag">Item-for-item proposals with optional cash balancing</span></div>
+          <div class="stat"><b>Direct chat</b><span class="tag">Built-in negotiation between both sides</span></div>
+          <div class="stat"><b>Logistics</b><span class="tag">Shipping label generation after trade acceptance</span></div>
+        </div>
       </div>
-      <div class="mock">
-        <h3>What we can customize next</h3>
+      <div class="panel hero-panel">
+        <div class="mini">
+          <div class="badge">Client scope captured</div>
+          <strong>Confirmed so far</strong>
+          <ul>
+            <li>Multi-vendor marketplace</li>
+            <li>Item-for-item exchange model</li>
+            <li>Optional cash top-up</li>
+            <li>Direct negotiation chat</li>
+            <li>Automatic shipping labels</li>
+          </ul>
+        </div>
+        <div class="mini">
+          <div class="badge">Still to confirm</div>
+          <strong>Open product decisions</strong>
+          <ul>
+            <li>Local vs nationwide vs international</li>
+            <li>Escrow flow for cash top-ups</li>
+            <li>Website only vs website + mobile app</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Core platform features</h2>
+      <div class="grid3">
+        <div class="card feature"><h3>Listings marketplace</h3><p>Users can create public item listings with images, descriptions, condition, category, and estimated trade value.</p></div>
+        <div class="card feature"><h3>Swap offer engine</h3><p>Buyers propose an exchange item and add optional cash when item values differ.</p></div>
+        <div class="card feature"><h3>Negotiation chat</h3><p>Each swap has a direct chat thread so both sides can refine terms before accepting.</p></div>
+        <div class="card feature"><h3>Cash balancing</h3><p>Support structured top-up amounts inside the platform for uneven item values.</p></div>
+        <div class="card feature"><h3>Trade states</h3><p>Offers move through sent, negotiated, accepted, shipped, delivered, and completed states.</p></div>
+        <div class="card feature"><h3>Shipping support</h3><p>Generate labels and track logistics after a trade is confirmed.</p></div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <h2>How the exchange flow works</h2>
+      <div class="flow">
+        <div class="card step"><small>01</small><strong>List item</strong><div class="tag">User publishes an item and desired swap preferences.</div></div>
+        <div class="card step"><small>02</small><strong>Send offer</strong><div class="tag">Another user proposes an item and optional cash top-up.</div></div>
+        <div class="card step"><small>03</small><strong>Negotiate</strong><div class="tag">Both users chat, refine terms, and align value.</div></div>
+        <div class="card step"><small>04</small><strong>Confirm trade</strong><div class="tag">The exchange is accepted and logistics are triggered.</div></div>
+        <div class="card step"><small>05</small><strong>Ship & close</strong><div class="tag">Shipping labels are created and the transaction is completed.</div></div>
+      </div>
+    </section>
+
+    <section id="mvp" class="split">
+      <div class="card feature">
+        <h2>MVP build plan</h2>
         <ul>
-          <li>Brand name and logo</li>
-          <li>Service-specific sections</li>
-          <li>Real images and content</li>
-          <li>Call/WhatsApp/contact buttons</li>
-          <li>Booking, quote, or inquiry forms</li>
+          <li>Marketing landing page</li>
+          <li>User auth and onboarding</li>
+          <li>Create / manage listings</li>
+          <li>Browse and search listings</li>
+          <li>Make swap offers</li>
+          <li>Offer negotiation chat</li>
+          <li>Trade dashboard</li>
+          <li>Shipping label placeholder integration</li>
         </ul>
       </div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <h2>About</h2>
-      <p class="lead">Use this section to introduce the business, explain what it does, and build trust with visitors.</p>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="container">
-      <h2>Services</h2>
-      <div class="grid-3">
-        <div class="card"><h3>Service One</h3><p class="muted">Short description of the first service offered by the business.</p></div>
-        <div class="card"><h3>Service Two</h3><p class="muted">Short description of the second service offered by the business.</p></div>
-        <div class="card"><h3>Service Three</h3><p class="muted">Short description of the third service offered by the business.</p></div>
+      <div class="card feature">
+        <h2>Product notes</h2>
+        <ul>
+          <li>Trust and safety will be central for item exchange flows.</li>
+          <li>Escrow may be needed if cash top-ups are processed in-platform.</li>
+          <li>Carrier integration can start as a service abstraction, then connect to APIs later.</li>
+          <li>A website-first launch is the fastest route unless mobile is mandatory from day one.</li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container contact-box">
-      <div>
-        <h2>Contact</h2>
-        <p class="lead">This section can be updated with the client’s phone number, email, address, WhatsApp, or booking link.</p>
-      </div>
-      <div class="card">
-        <form>
-          <input type="text" placeholder="Your name" />
-          <input type="email" placeholder="Your email" />
-          <textarea rows="5" placeholder="Tell us about your project"></textarea>
-          <button class="btn" type="button">Send Inquiry</button>
-        </form>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">Starter site prepared for client customization.</div>
+    <div class="wrap">Prototype scaffold created from the client conversation. Next phase: app shell, listings, swap engine, and chat workflow.</div>
   </footer>
 </body>
 </html>
