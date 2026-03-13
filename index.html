@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Business Website Starter</title>
+  <meta name="description" content="A clean starter website for a service business." />
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --brand: #2563eb;
+      --brand-dark: #1d4ed8;
+      --card: #ffffff;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { width: min(1100px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .brand { font-size: 1.2rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 18px; }
+    .nav-links a, .btn, .btn-outline { text-decoration: none; }
+    .hero {
+      padding: 88px 0 64px;
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: center;
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.05; margin: 0 0 16px; }
+    h2 { font-size: 2rem; margin: 0 0 12px; }
+    p.lead { font-size: 1.1rem; color: var(--muted); max-width: 680px; }
+    .btn, .btn-outline {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      margin-right: 10px;
+      margin-top: 10px;
+    }
+    .btn { background: var(--brand); color: #fff; }
+    .btn:hover { background: var(--brand-dark); }
+    .btn-outline { border: 1px solid var(--brand); color: var(--brand); background: #fff; }
+    .mock {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.06);
+    }
+    section { padding: 70px 0; }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+    }
+    .muted { color: var(--muted); }
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    form {
+      display: grid;
+      gap: 14px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font: inherit;
+    }
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 850px) {
+      .hero-grid, .grid-3, .contact-box { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">Your Business Name</div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="muted">Starter website preview</p>
+        <h1>Professional website for your business</h1>
+        <p class="lead">This is a clean starter layout we can quickly customize once the client confirms their business name, services, images, and preferred style.</p>
+        <a class="btn" href="#contact">Get Started</a>
+        <a class="btn-outline" href="#services">View Services</a>
+      </div>
+      <div class="mock">
+        <h3>What we can customize next</h3>
+        <ul>
+          <li>Brand name and logo</li>
+          <li>Service-specific sections</li>
+          <li>Real images and content</li>
+          <li>Call/WhatsApp/contact buttons</li>
+          <li>Booking, quote, or inquiry forms</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About</h2>
+      <p class="lead">Use this section to introduce the business, explain what it does, and build trust with visitors.</p>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Services</h2>
+      <div class="grid-3">
+        <div class="card"><h3>Service One</h3><p class="muted">Short description of the first service offered by the business.</p></div>
+        <div class="card"><h3>Service Two</h3><p class="muted">Short description of the second service offered by the business.</p></div>
+        <div class="card"><h3>Service Three</h3><p class="muted">Short description of the third service offered by the business.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-box">
+      <div>
+        <h2>Contact</h2>
+        <p class="lead">This section can be updated with the client’s phone number, email, address, WhatsApp, or booking link.</p>
+      </div>
+      <div class="card">
+        <form>
+          <input type="text" placeholder="Your name" />
+          <input type="email" placeholder="Your email" />
+          <textarea rows="5" placeholder="Tell us about your project"></textarea>
+          <button class="btn" type="button">Send Inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">Starter site prepared for client customization.</div>
+  </footer>
+</body>
+</html>
